@@ -116,7 +116,7 @@ The AWS Well-Architected Framework is a set of best practices for designing and 
 - [Sustainability Pilar](https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sustainability-pillar.html)
 - [Different Models](https://www.bcs.org/articles-opinion-and-research/a-comparison-of-the-top-four-enterprise-architecture-frameworks)
 
-## **Tips/Best Practices*
+## **Tips/Best Practices:**
 1. Setting Billing Alerts is the first step to any cloud related project. Before even we start using cloud services. 
 2. Asking Question while the meeting will help you in understanding what we are building & construct our Archi Diagram. Understand their Constraints, Risk, Assumptions & Requirements are.
 3. Ask "Dumb Questions" eg. What db are we using? How can we build our app in 3 weeks if there are only 2 full time devs? & Think from the perspective of an end user. eg. When logging will there be an auth?     
