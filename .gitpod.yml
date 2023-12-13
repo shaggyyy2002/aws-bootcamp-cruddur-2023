@@ -21,6 +21,7 @@ tasks:
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
+    - mtxr.sqltools-driver-pg
 
 ports:
   - name: frontend
