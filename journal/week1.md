@@ -270,6 +270,7 @@ Container security involves defining and adhering to build, deployment, and runt
 - [Docker Images by LinuxServer](https://docs.linuxserver.io/images/)
 - [Dockerfile Reference](https://docs.docker.com/engine/reference/builder/)
 - [DynamoDB dockercompose](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html) 
+- [Setup Health Check in Docker Compose](https://www.paulsblog.dev/how-to-successfully-implement-a-healthcheck-in-docker-compose/)
 
 ## **Tips/Best Practices**
 
