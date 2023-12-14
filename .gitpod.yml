@@ -22,6 +22,7 @@ vscode:
   extensions:
     - 42Crunch.vscode-openapi
     - mtxr.sqltools-driver-pg
+    - mtxr.sqltools
 
 ports:
   - name: frontend
