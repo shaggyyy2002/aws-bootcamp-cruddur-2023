@@ -73,8 +73,90 @@ export HONEYCOMB_API_KEY=""
 gp env HONEYCOMB_API_KEY=""
 ```
 
+## AWS XRay SDK
 
+AWS X-Ray provides a complete view of requests as they travel through your application and filters visual data across payloads, functions, traces, services, APIs, and more with no-code and low-code motions.
 
+### Setting Up AWS Xray
+
+Make a `xray.json` file in `./aws/json/xray.json`
+```json
+{
+  "SamplingRule": {
+      "RuleName": "Cruddur",
+      "ResourceARN": "*",
+      "Priority": 9000,
+      "FixedRate": 0.1,
+      "ReservoirSize": 5,
+      "ServiceName": "Cruddur",
+      "ServiceType": "*",
+      "Host": "*",
+      "HTTPMethod": "*",
+      "URLPath": "*",
+      "Version": 1
+  }
+}
+
+To apply the above things you will have to paste this command on your terminal
+replace `FLASK_ADDRESS=SERVICE_NAME` ie. backend-flask
+
+```sh
+aws xray create-group \
+   --group-name "Cruddur" \
+   --filter-expression "service(\"$FLASK_ADDRESS\")"
+```
+
+If its setup properly you will get an output as 
+
+```json
+{
+    "Group": {
+        "GroupName": "Cruddur",
+        "GroupARN": "arn:aws:xray:ap-south-1:746231924951:group/Cruddur/2LG66ET4D3DHULQQITKDUS4NA35TR54CXLSKVB6772UPSBNYYWPA",
+        "FilterExpression": "service(\"backend-flask\")",
+        "InsightsConfiguration": {
+            "InsightsEnabled": false,
+            "NotificationsEnabled": false
+        }
+    }
+}
+```
+
+Create a Sampling Rule
+```
+aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
+```
+The Output 
+
+```json
+{
+    "SamplingRuleRecord": {
+        "SamplingRule": {
+            "RuleName": "Cruddur",
+            "RuleARN": "arn:aws:xray:ca**-**-924951:sampling-rule/Cruddur",
+            "ResourceARN": "*",
+            "Priority": 9000,
+            "FixedRate": 0.1,
+            "ReservoirSize": 5,
+            "ServiceName": "backend-flask",
+            "ServiceType": "*",
+            "Host": "*",
+            "HTTPMethod": "*",
+            "URLPath": "*",
+            "Version": 1,
+            "Attributes": {}
+        },
+        "CreatedAt": "2023-12-15T13:09:06+00:00",
+        "ModifiedAt": "2023-12-15T13:09:06+00:00"
+    }
+}
+```
+
+### Middleware
+
+Middleware speeds development of distributed applications by simplifying connectivity between applications, application components and back-end data sources.
+
+![MiddleWare](../_docs/assets/middleware.png)
 
 
 
@@ -90,5 +172,8 @@ gp env HONEYCOMB_API_KEY=""
 - [HoneyComb](https://ui.honeycomb.io/)
 - [HoneyComb Docs](https://docs.honeycomb.io/quickstart/)
 - [Opentelementry](https://opentelemetry.io/docs/)
-
+- [AWS XRay SDK](https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python.html)
+- [AWS Xray About](https://aws.amazon.com/xray/)
 ## **Tips/Best Practices**
+
+- Everytime we change something important in the file commit the changes. 
