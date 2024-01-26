@@ -73,11 +73,14 @@ export HONEYCOMB_API_KEY=""
 gp env HONEYCOMB_API_KEY=""
 ```
 
+## Observability vs Monitoring
 
 
 
 
 
+
+## CloudWatch Logs
 
 
 
